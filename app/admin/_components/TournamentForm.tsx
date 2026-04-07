@@ -2,6 +2,9 @@
 
 import { useForm } from "react-hook-form";
 import { useToast } from "@/lib/toast/context";
+import { TextField } from "@/app/components/atoms/form_atoms/TextField";
+import { DateField } from "@/app/components/atoms/form_atoms/DateField";
+import { Button } from "@/app/components/atoms/Button";
 
 interface TournamentFormValues {
   name: string;
@@ -38,49 +41,31 @@ export function TournamentForm({ onSubmit, disabled }: Props) {
 
   return (
     <form onSubmit={handleSubmit(handleCreate)} className="flex flex-wrap gap-4">
-      <label className="flex flex-col gap-1 text-sm">
-        Name
-        <input
-          {...register("name", { required: true })}
-          disabled={disabled}
-          placeholder="e.g. SCG Open Pittsburgh"
-          className="rounded border px-2 py-1.5"
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        Start
-        <input
-          type="date"
-          {...register("start_date", { required: true })}
-          disabled={disabled}
-          className="rounded border px-2 py-1.5"
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        End
-        <input
-          type="date"
-          {...register("end_date", { required: true })}
-          disabled={disabled}
-          className="rounded border px-2 py-1.5"
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        Location
-        <input
-          {...register("location", { required: true })}
-          disabled={disabled}
-          placeholder="e.g. Pittsburgh, PA"
-          className="rounded border px-2 py-1.5"
-        />
-      </label>
-      <button
-        type="submit"
-        disabled={disabled || isSubmitting}
-        className="self-end rounded bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
-      >
-        {isSubmitting ? "Adding…" : "Add Tournament"}
-      </button>
+      <TextField
+        label="Name"
+        registration={register("name", { required: true })}
+        placeholder="e.g. SCG Open Pittsburgh"
+        disabled={disabled}
+      />
+      <DateField
+        label="Start"
+        registration={register("start_date", { required: true })}
+        disabled={disabled}
+      />
+      <DateField
+        label="End"
+        registration={register("end_date", { required: true })}
+        disabled={disabled}
+      />
+      <TextField
+        label="Location"
+        registration={register("location", { required: true })}
+        placeholder="e.g. Pittsburgh, PA"
+        disabled={disabled}
+      />
+      <Button type="submit" disabled={disabled} loading={isSubmitting} className="self-end">
+        Add Tournament
+      </Button>
     </form>
   );
 }

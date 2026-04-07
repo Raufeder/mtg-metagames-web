@@ -7,6 +7,11 @@ import { addArchetype, type Archetype } from "@/lib/api/archetypes";
 import { createDeck, addCards } from "@/lib/api/decks";
 import type { Metagame } from "@/lib/api/metagames";
 import type { Tournament } from "@/lib/api/tournaments";
+import { TextField } from "@/app/components/atoms/form_atoms/TextField";
+import { NumberField } from "@/app/components/atoms/form_atoms/NumberField";
+import { TextareaField } from "@/app/components/atoms/form_atoms/TextareaField";
+import { ColorPicker } from "@/app/components/atoms/form_atoms/ColorPicker";
+import { Button } from "@/app/components/atoms/Button";
 
 interface DeckFormValues {
   tournament_id: string;
@@ -26,6 +31,7 @@ export function DeckEntryForm({ metagame, tournaments }: Props) {
   const { addToast } = useToast();
   const [archetypes, setArchetypes] = useState<Archetype[]>([]);
   const [newArchetypeName, setNewArchetypeName] = useState("");
+  const [archetypeColors, setArchetypeColors] = useState<string[]>([]);
   const [addingArchetype, setAddingArchetype] = useState(false);
 
   const {
@@ -40,13 +46,14 @@ export function DeckEntryForm({ metagame, tournaments }: Props) {
     if (!newArchetypeName.trim()) return;
     setAddingArchetype(true);
     try {
-      const data = await addArchetype(metagame.id, newArchetypeName.trim());
+      const data = await addArchetype(metagame.id, newArchetypeName.trim(), archetypeColors);
       setArchetypes((prev) =>
         prev.find((a) => a.id === data.id) ? prev : [...prev, data]
       );
       setValue("archetype_id", String(data.id));
       addToast(`Archetype "${data.name}" ready`, "success");
       setNewArchetypeName("");
+      setArchetypeColors([]);
     } catch (e) {
       addToast(e instanceof Error ? e.message : "Failed to add archetype", "error");
     } finally {
@@ -81,36 +88,25 @@ export function DeckEntryForm({ metagame, tournaments }: Props) {
     <div className="space-y-8">
       {/* 2a. Archetype */}
       <section className="rounded-lg border p-5">
-        <h2 className="mb-4 text-base font-semibold">2a. Archetype</h2>
-        <div className="flex flex-wrap gap-3">
-          {archetypes.length > 0 && (
-            <select
-              {...register("archetype_id")}
+        <h2 className="mb-4 text-base font-semibold">2a. Archetype (Must select the right archetype for each deck you upload)</h2>
+        <div className="space-y-3">
+          <div className="flex flex-wrap gap-3">
+            <input
+              value={newArchetypeName}
+              onChange={(e) => setNewArchetypeName(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleAddArchetype()}
+              placeholder="New archetype name"
               className="rounded border px-2 py-1.5 text-sm"
+            />
+            <Button
+              onClick={handleAddArchetype}
+              disabled={!newArchetypeName.trim()}
+              loading={addingArchetype}
             >
-              <option value="">— select existing —</option>
-              {archetypes.map((a) => (
-                <option key={a.id} value={a.id}>
-                  {a.name}
-                </option>
-              ))}
-            </select>
-          )}
-          <input
-            value={newArchetypeName}
-            onChange={(e) => setNewArchetypeName(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleAddArchetype()}
-            placeholder="New archetype name"
-            className="rounded border px-2 py-1.5 text-sm"
-          />
-          <button
-            type="button"
-            onClick={handleAddArchetype}
-            disabled={!newArchetypeName.trim() || addingArchetype}
-            className="rounded bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
-          >
-            {addingArchetype ? "Adding…" : "Add / Get Archetype"}
-          </button>
+              Add / Get Archetype
+            </Button>
+          </div>
+          <ColorPicker value={archetypeColors} onChange={setArchetypeColors} />
         </div>
       </section>
 
@@ -119,6 +115,27 @@ export function DeckEntryForm({ metagame, tournaments }: Props) {
         <section className="rounded-lg border p-5">
           <h2 className="mb-4 text-base font-semibold">2b. Deck Info</h2>
           <div className="flex flex-wrap gap-4">
+            {archetypes.length > 0 && (
+              <label className="flex flex-col gap-1 text-sm">
+                Archetype
+                <select
+                  {...register("archetype_id", { required: true })}
+                  className="rounded border px-2 py-1.5 text-sm"
+                  onChange={(e) => {
+                    setValue("archetype_id", e.target.value);
+                    const match = archetypes.find((a) => String(a.id) === e.target.value);
+                    if (match) setValue("name", match.name);
+                  }}
+                >
+                  <option value="">— select —</option>
+                  {archetypes.map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.name} {a.colors.length > 0 ? `(${a.colors.join("")})` : ""}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
             <label className="flex flex-col gap-1 text-sm">
               Tournament
               <select
@@ -133,56 +150,37 @@ export function DeckEntryForm({ metagame, tournaments }: Props) {
                 ))}
               </select>
             </label>
-            <label className="flex flex-col gap-1 text-sm">
-              Player name
-              <input
-                {...register("player_name", { required: true })}
-                className="rounded border px-2 py-1.5"
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm">
-              <div className="flex items-center gap-1">
-              Deck name{" "}
-              <span className="text-zinc-400">(optional)</span>
-              </div>
-              <input
-                {...register("name")}
-                className="rounded border px-2 py-1.5"
-              />
-            </label>
-            <label className="flex flex-col gap-1 text-sm">
-              <div className="flex items-center gap-1">
-              Placement{" "}
-              <span className="text-zinc-400">(optional)</span>
-              </div>
-              <input
-                type="number"
-                min={1}
-                {...register("placement")}
-                className="w-20 rounded border px-2 py-1.5"
-              />
-            </label>
+            <TextField
+              label="Player name"
+              registration={register("player_name", { required: true })}
+            />
+            <TextField
+              label="Deck name"
+              registration={register("name")}
+              optional
+            />
+            <NumberField
+              label="Placement"
+              registration={register("placement")}
+              optional
+              min={1}
+            />
           </div>
         </section>
 
         <section className="rounded-lg border p-5">
-          <h2 className="mb-1 text-base font-semibold">2c. Decklist</h2>
-          <p className="mb-3 text-xs text-zinc-500">
-            Paste raw decklist. Use &quot;Sideboard&quot; on its own line to separate.
-          </p>
-          <textarea
-            {...register("card_list", { required: true })}
+          <h2 className="mb-4 text-base font-semibold">2c. Decklist</h2>
+          <TextareaField
+            label=""
+            registration={register("card_list", { required: true })}
             placeholder={"4 Primeval Titan\n4 Cultivate\n...\nSideboard\n3 Acidic Slime"}
+            hint='Use "Sideboard" on its own line to separate.'
             rows={14}
-            className="w-full rounded border px-2 py-1.5 font-mono text-sm"
+            mono
           />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="mt-3 rounded bg-green-600 px-5 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-50"
-          >
-            {isSubmitting ? "Submitting…" : "Submit Deck"}
-          </button>
+          <Button type="submit" variant="success" loading={isSubmitting} className="mt-3">
+            Submit Deck
+          </Button>
         </section>
       </form>
     </div>
