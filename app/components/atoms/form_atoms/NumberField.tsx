@@ -13,7 +13,7 @@ export function NumberField({ label, registration, optional, min, disabled }: Pr
     <label className="flex flex-col gap-1 text-sm">
       <span>
         {label}{" "}
-        {optional && <span className="text-zinc-400">(optional)</span>}
+        {optional && <span className="text-text-muted">(optional)</span>}
       </span>
       <input
         type="number"

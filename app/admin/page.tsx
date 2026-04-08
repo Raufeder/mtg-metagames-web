@@ -67,8 +67,8 @@ function TabButton({
       disabled={disabled}
       className={`rounded-t px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
         active
-          ? "border border-b-white bg-white text-blue-700"
-          : "text-zinc-500 hover:text-zinc-800"
+          ? "border border-b-bg bg-bg text-primary"
+          : "text-text-muted hover:text-text"
       }`}
     >
       {label}

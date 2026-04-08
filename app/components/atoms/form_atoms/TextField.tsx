@@ -13,7 +13,7 @@ export function TextField({ label, registration, placeholder, optional, disabled
     <label className="flex flex-col gap-1 text-sm">
       <span>
         {label}{" "}
-        {optional && <span className="text-zinc-400">(optional)</span>}
+        {optional && <span className="text-text-muted">(optional)</span>}
       </span>
       <input
         type="text"

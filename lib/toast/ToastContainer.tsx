@@ -14,8 +14,8 @@ export function ToastContainer() {
           key={toast.id}
           className={`flex items-start justify-between gap-3 rounded-lg border px-4 py-3 shadow-lg text-sm font-medium ${
             toast.type === "success"
-              ? "border-green-300 bg-green-50 text-green-800"
-              : "border-red-300 bg-red-50 text-red-800"
+              ? "border-success bg-success/10 text-success"
+              : "border-danger bg-danger/10 text-danger"
           }`}
         >
           <span>{toast.message}</span>

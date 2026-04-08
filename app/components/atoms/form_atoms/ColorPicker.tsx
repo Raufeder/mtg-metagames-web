@@ -36,8 +36,8 @@ export function ColorPicker({ value, onChange }: Props) {
             title={COLOR_LABELS[color]}
             className={`rounded border px-3 py-1 text-sm font-medium transition-colors ${
               active
-                ? "border-blue-600 bg-blue-600 text-white"
-                : "border-zinc-300 bg-white text-zinc-600 hover:border-zinc-400"
+                ? "border-primary bg-primary text-bg"
+                : "border-border bg-bg-light text-text-muted hover:border-border-muted"
             }`}
           >
             {color}

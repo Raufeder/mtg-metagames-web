@@ -108,7 +108,7 @@ export function MetagameSetupForm({
       <section className="rounded-lg border p-5">
         <h2 className="mb-4 text-base font-semibold">1a. Create Metagame</h2>
         {metagame ? (
-          <p className="text-sm text-green-700">
+          <p className="text-sm text-success">
             ✓ {metagame.name} #{metagame.id} ({metagame.start_date} → {metagame.end_date})
           </p>
         ) : (
@@ -155,7 +155,7 @@ export function MetagameSetupForm({
       <section className={`rounded-lg border p-5 ${sectionDisabled}`}>
         <h2 className="mb-4 text-base font-semibold">
           1c. Banlist{" "}
-          <span className="text-sm font-normal text-zinc-400">(optional)</span>
+          <span className="text-sm font-normal text-text-muted">(optional)</span>
         </h2>
         <form onSubmit={handleBanlistSubmit(onSubmitBanlist)} className="space-y-3">
           <TextareaField
@@ -176,7 +176,7 @@ export function MetagameSetupForm({
       <section className={`rounded-lg border p-5 ${sectionDisabled}`}>
         <h2 className="mb-4 text-base font-semibold">1d. Add Tournaments</h2>
         {tournaments.length > 0 && (
-          <ul className="mb-4 space-y-1 text-sm text-zinc-600">
+          <ul className="mb-4 space-y-1 text-sm text-text-muted">
             {tournaments.map((t) => (
               <li key={t.id}>#{t.id} — {t.name}</li>
             ))}

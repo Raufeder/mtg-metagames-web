@@ -1,0 +1,206 @@
+{
+    "id": "4bdb83f9-c01f-4e04-b098-b92be8472185",
+    "end_date": "2011-02-03T00:00:00+00:00",
+    "start_date": "2010-10-01T00:00:00+00:00",
+    "name": "Scars of Mirrodin Standard",
+    "tournaments": [
+        {
+            "id": "18bb53ed-99e6-4e83-b953-ab63f4e39b66",
+            "name": "SCG Open Richmond",
+            "end_date": "2010-12-04T00:00:00+00:00",
+            "location": "Richmond, VA",
+            "start_date": "2010-12-04T00:00:00+00:00",
+            "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185"
+        },
+        {
+            "id": "f00692f7-4cbd-4840-93d6-ce9b05178a9e",
+            "name": "StarCityGames Invitational",
+            "end_date": "2010-12-05T00:00:00+00:00",
+            "location": "Richmond, VA",
+            "start_date": "2010-12-05T00:00:00+00:00",
+            "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185"
+        },
+        {
+            "id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4",
+            "name": "2010 World Championships",
+            "end_date": "2010-12-12T00:00:00+00:00",
+            "location": "Chiba, Japan",
+            "start_date": "2010-12-09T00:00:00+00:00",
+            "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185"
+        }
+    ],
+    "metagames_archetypes": [
+        {
+            "archetypes": {
+                "id": "efd6c179-52af-491e-99f4-420367a97684",
+                "name": "UB Midrange",
+                "colors": [
+                    "U",
+                    "B"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "47633245-4c08-490e-9b2a-17a7ee1ab8a3",
+                "name": "GR Valakut",
+                "colors": [
+                    "R",
+                    "G"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "77989615-47d4-4143-b665-ce479796a4cc",
+                "name": "UW Control",
+                "colors": [
+                    "U",
+                    "W"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "f21be280-83f6-493d-a20b-56176a9aaf1a",
+                "name": "Mono G Eldrazi",
+                "colors": [
+                    "G"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "9fa4cfa9-92fc-4edf-8892-756d9691c74b",
+                "name": "BUG Midrange",
+                "colors": [
+                    "B",
+                    "U",
+                    "G"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "934c29b2-1200-4145-834e-58258fb7680a",
+                "name": "Br Vampires",
+                "colors": [
+                    "B",
+                    "R"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "2d98d438-f13d-4dda-8c8b-2ee52b411b12",
+                "name": "UB Control",
+                "colors": [
+                    "U",
+                    "B"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "4a71de06-12b0-4c24-ac27-568819a2e168",
+                "name": "RG Sacrifice",
+                "colors": [
+                    "R",
+                    "G"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "06ae4f9f-667d-45bc-9463-c14e527ae7e0",
+                "name": "RUG Midrange",
+                "colors": [
+                    "R",
+                    "U",
+                    "G"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "23881b45-e0c5-4336-9d92-2c724d0008a4",
+                "name": "RW Landfall Aggro",
+                "colors": [
+                    "W",
+                    "R"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "d84f20b2-fd6b-44e2-b1e5-a68743db75b6",
+                "name": "Mono B Control",
+                "colors": [
+                    "B"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "d4fb73fc-631f-4630-af45-5422afffe296",
+                "name": "Mono R Aggro",
+                "colors": [
+                    "R"
+                ]
+            }
+        },
+        {
+            "archetypes": {
+                "id": "256bbde6-861a-4e43-bb63-1eb59162108e",
+                "name": "GW Creatures",
+                "colors": [
+                    "W",
+                    "G"
+                ]
+            }
+        }
+    ],
+    "metagame_banlist": [],
+    "metagame_sets": [
+        {
+            "sets": {
+                "name": "Zendikar",
+                "set_code": "zen",
+                "scryfall_id": "eb16a2bd-a218-4e4e-8339-4aa1afc0c8d2",
+                "icon_set_image": "https://svgs.scryfall.io/sets/zen.svg?1775448000"
+            }
+        },
+        {
+            "sets": {
+                "name": "Worldwake",
+                "set_code": "wwk",
+                "scryfall_id": "2f248ce6-c2a5-4c6f-a2be-0c593fbe173c",
+                "icon_set_image": "https://svgs.scryfall.io/sets/wwk.svg?1775448000"
+            }
+        },
+        {
+            "sets": {
+                "name": "Rise of the Eldrazi",
+                "set_code": "roe",
+                "scryfall_id": "eadb8a82-ec56-4623-b50e-42e7e60cb535",
+                "icon_set_image": "https://svgs.scryfall.io/sets/roe.svg?1775448000"
+            }
+        },
+        {
+            "sets": {
+                "name": "Scars of Mirrodin",
+                "set_code": "som",
+                "scryfall_id": "8f403072-9b22-4e69-8d59-22dc4c97fd8d",
+                "icon_set_image": "https://svgs.scryfall.io/sets/som.svg?1775448000"
+            }
+        },
+        {
+            "sets": {
+                "name": "Magic 2011",
+                "set_code": "m11",
+                "scryfall_id": "485d2468-18c8-42a4-9482-ca1c51e0470e",
+                "icon_set_image": "https://svgs.scryfall.io/sets/m11.svg?1775448000"
+            }
+        }
+    ]
+}

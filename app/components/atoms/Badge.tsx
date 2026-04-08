@@ -4,10 +4,10 @@ interface Props {
 }
 
 const VARIANTS = {
-  blue: "bg-blue-100 text-blue-800",
-  green: "bg-green-100 text-green-800",
-  red: "bg-red-100 text-red-800",
-  zinc: "bg-zinc-100 text-zinc-700",
+  blue:    "bg-info/20 text-info",
+  green:   "bg-success/20 text-success",
+  red:     "bg-danger/20 text-danger",
+  zinc:    "bg-bg-dark text-text-muted",
 };
 
 export function Badge({ label, variant = "blue" }: Props) {

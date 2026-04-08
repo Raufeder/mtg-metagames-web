@@ -8,7 +8,8 @@ if (!BACKEND_URL) {
 
 async function handler(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   const { path } = await params;
-  const url = `${BACKEND_URL}/${path.join("/")}`;
+  const search = req.nextUrl.search; // preserves ?q=... and any other params
+  const url = `${BACKEND_URL}/${path.join("/")}${search}`;
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",

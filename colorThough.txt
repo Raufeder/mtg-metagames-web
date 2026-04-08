@@ -1,0 +1,31 @@
+--------LIGHT MODE------------
+--bg-dark: oklch(0.92 0.04 210);
+--bg: oklch(0.96 0.04 210);
+--bg-light: oklch(1 0.04 210);
+--text: oklch(0.15 0.08 210);
+--text-muted: oklch(0.4 0.08 210);
+--highlight: oklch(1 0.08 210);
+--border: oklch(0.6 0.08 210);
+--border-muted: oklch(0.7 0.08 210);
+--primary: oklch(0.4 0.1 210);
+--secondary: oklch(0.4 0.1 30);
+--danger: oklch(0.5 0.08 30);
+--warning: oklch(0.5 0.08 100);
+--success: oklch(0.5 0.08 160);
+--info: oklch(0.5 0.08 260);
+
+--------DARK MODE--------------
+--bg-dark: oklch(0.1 0.04 210);
+--bg: oklch(0.15 0.04 210);
+--bg-light: oklch(0.2 0.04 210);
+--text: oklch(0.96 0.08 210);
+--text-muted: oklch(0.76 0.08 210);
+--highlight: oklch(0.5 0.08 210);
+--border: oklch(0.4 0.08 210);
+--border-muted: oklch(0.3 0.08 210);
+--primary: oklch(0.76 0.1 210);
+--secondary: oklch(0.76 0.1 30);
+--danger: oklch(0.7 0.08 30);
+--warning: oklch(0.7 0.08 100);
+--success: oklch(0.7 0.08 160);
+--info: oklch(0.7 0.08 260);

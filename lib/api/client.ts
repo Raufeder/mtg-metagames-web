@@ -13,6 +13,17 @@ function resolveUrl(path: string): string {
   return `${BASE_URL}${path}`;
 }
 
+export async function get<T = unknown>(path: string): Promise<T> {
+  const res = await fetch(resolveUrl(path));
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => res.statusText);
+    throw new Error(`${res.status} ${res.statusText}: ${text}`);
+  }
+
+  return res.json() as Promise<T>;
+}
+
 export async function post<T = unknown>(path: string, body: object): Promise<T> {
   const res = await fetch(resolveUrl(path), {
     method: "POST",

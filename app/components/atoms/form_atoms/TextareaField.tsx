@@ -22,7 +22,7 @@ export function TextareaField({
   return (
     <div className="flex flex-col gap-1 text-sm">
       <span className="font-medium">{label}</span>
-      {hint && <p className="text-xs text-zinc-500">{hint}</p>}
+      {hint && <p className="text-xs text-text-muted">{hint}</p>}
       <textarea
         {...registration}
         placeholder={placeholder}
