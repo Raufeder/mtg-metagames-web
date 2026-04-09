@@ -1,0 +1,146 @@
+{
+    "id": "08d04363-3319-462b-a242-8b921324bd28",
+    "archetype_id": "47633245-4c08-490e-9b2a-17a7ee1ab8a3",
+    "tournament_id": "18bb53ed-99e6-4e83-b953-ab63f4e39b66",
+    "player_name": "Christian Calcano",
+    "name": "GR Valakut",
+    "placement": 1,
+    "archetypes": {
+        "id": "47633245-4c08-490e-9b2a-17a7ee1ab8a3",
+        "name": "GR Valakut",
+        "colors": [
+            "R",
+            "G"
+        ]
+    },
+    "tournaments": {
+        "id": "18bb53ed-99e6-4e83-b953-ab63f4e39b66",
+        "name": "SCG Open Richmond",
+        "end_date": "2010-12-04T00:00:00+00:00",
+        "location": "Richmond, VA",
+        "start_date": "2010-12-04T00:00:00+00:00",
+        "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185"
+    },
+    "decklist_cards": [
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "c6f1e60f-a195-4590-80b0-86767de6c423",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "6d5537da-112e-4679-a113-b5d7ce32a66b",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "f1cc00f9-ae7b-4f7b-95f2-bc5c00e4bd72",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "3976affd-8c2b-499a-a946-b629c2ba59c7",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "3e76be46-cf81-4fef-bc5b-f87666cb0413",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "159c309c-568d-4780-9db5-b50a997e7bb2",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "77c6fa74-5543-42ac-9ead-0e890b188e99",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "55b71fb4-27ea-4846-87e4-efd2190faf36",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 2,
+            "scryfall_id": "a30f5555-2fbe-4c88-9e4f-1f2e81ea6cfd",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 7,
+            "scryfall_id": "f169dfb2-e4c8-46e9-8591-e51bb82da082",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 12,
+            "scryfall_id": "a642c7b1-d4d1-4125-a66d-560438e5ee51",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 3,
+            "scryfall_id": "9a4c5629-fadd-42b9-850f-9f8586a2ca50",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "37bce60d-2cb0-4772-9f5c-122a7ed426a0",
+            "is_sideboard": false
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 3,
+            "scryfall_id": "932d48fb-42b5-4aaa-a91c-d35cdb5e41a3",
+            "is_sideboard": true
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 1,
+            "scryfall_id": "d2d5124b-4d73-4aa9-9331-88e03779ffad",
+            "is_sideboard": true
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 2,
+            "scryfall_id": "50fad73f-c6eb-46d7-8971-9be4d7d7b75f",
+            "is_sideboard": true
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 1,
+            "scryfall_id": "d27cf7b7-7982-46bd-a559-7789c0e74bae",
+            "is_sideboard": true
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 3,
+            "scryfall_id": "e1b7809f-f3a3-439e-8bae-c083842de1bf",
+            "is_sideboard": true
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 4,
+            "scryfall_id": "4391b0af-2f26-4a45-9e2a-5bd8e9838107",
+            "is_sideboard": true
+        },
+        {
+            "deck_id": "08d04363-3319-462b-a242-8b921324bd28",
+            "quantity": 1,
+            "scryfall_id": "9464a820-65de-44f2-9895-46a35e8621a0",
+            "is_sideboard": true
+        }
+    ]
+}

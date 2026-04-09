@@ -1,20 +1,19 @@
+import { supabase } from "@/lib/supabase/client";
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 if (!BASE_URL) {
   throw new Error("NEXT_PUBLIC_API_URL is not set");
 }
 
-// In development, route through the local Next.js proxy to avoid CORS.
-// In production, call the Railway API directly.
-function resolveUrl(path: string): string {
-  if (process.env.NODE_ENV === "development") {
-    return `/api/proxy${path}`;
-  }
-  return `${BASE_URL}${path}`;
+async function authHeaders(): Promise<Record<string, string>> {
+  const { data } = await supabase.auth.getSession();
+  const token = data.session?.access_token;
+  return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
 export async function get<T = unknown>(path: string): Promise<T> {
-  const res = await fetch(resolveUrl(path));
+  const res = await fetch(`${BASE_URL}${path}`);
 
   if (!res.ok) {
     const text = await res.text().catch(() => res.statusText);
@@ -25,9 +24,10 @@ export async function get<T = unknown>(path: string): Promise<T> {
 }
 
 export async function post<T = unknown>(path: string, body: object): Promise<T> {
-  const res = await fetch(resolveUrl(path), {
+  const headers = await authHeaders();
+  const res = await fetch(`${BASE_URL}${path}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...headers },
     body: JSON.stringify(body),
   });
 

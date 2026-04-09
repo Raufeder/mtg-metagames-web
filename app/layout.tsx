@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { AuthProvider } from "@/lib/auth/context";
 import { ToastProvider } from "@/lib/toast/context";
 import { ToastContainer } from "@/lib/toast/ToastContainer";
 import { ThemeProvider } from "@/app/components/layout/ThemeProvider";
@@ -35,6 +36,7 @@ export default function RootLayout({
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+          <AuthProvider>
           <ThemeProvider>
             <ToastProvider>
               <Header />
@@ -45,6 +47,7 @@ export default function RootLayout({
               <ToastContainer />
             </ToastProvider>
           </ThemeProvider>
+          </AuthProvider>
         </body>
     </html>
   );

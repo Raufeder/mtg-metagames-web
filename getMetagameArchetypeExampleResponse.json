@@ -1,0 +1,43 @@
+{
+    "id": "06ae4f9f-667d-45bc-9463-c14e527ae7e0",
+    "name": "RUG Midrange",
+    "colors": [
+        "R",
+        "U",
+        "G"
+    ],
+    "decks": [
+        {
+            "id": "c1a00ca3-199f-47f6-8e8e-f092f4305fe4",
+            "name": "RUG Midrange",
+            "placement": 7,
+            "player_name": "Adam Cal",
+            "tournaments": {
+                "id": "f00692f7-4cbd-4840-93d6-ce9b05178a9e",
+                "name": "StarCityGames Invitational",
+                "end_date": "2010-12-05T00:00:00+00:00",
+                "location": "Richmond, VA",
+                "start_date": "2010-12-05T00:00:00+00:00",
+                "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185"
+            },
+            "archetype_id": "06ae4f9f-667d-45bc-9463-c14e527ae7e0",
+            "tournament_id": "f00692f7-4cbd-4840-93d6-ce9b05178a9e"
+        },
+        {
+            "id": "bdb7dd1d-3e1e-4d2f-854f-4ca8828e65ea",
+            "name": "GUr Midrange",
+            "placement": 24,
+            "player_name": "Cristian Zuniga",
+            "tournaments": {
+                "id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4",
+                "name": "2010 World Championships",
+                "end_date": "2010-12-12T00:00:00+00:00",
+                "location": "Chiba, Japan",
+                "start_date": "2010-12-09T00:00:00+00:00",
+                "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185"
+            },
+            "archetype_id": "06ae4f9f-667d-45bc-9463-c14e527ae7e0",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        }
+    ]
+}

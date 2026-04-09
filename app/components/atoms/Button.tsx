@@ -1,4 +1,4 @@
-import { Spinner } from "./Spinner";
+import { ButtonSpinner } from "./ButtonSpinner";
 
 interface Props {
   children: React.ReactNode;
@@ -32,8 +32,7 @@ export function Button({
       disabled={disabled || loading}
       className={`inline-flex items-center gap-2 rounded px-4 py-1.5 text-sm font-medium transition-colors disabled:opacity-50 ${VARIANTS[variant]} ${className ?? ""}`}
     >
-      {loading && <Spinner />}
-      {children}
+      {loading ?  <ButtonSpinner className="h-6 w-6" /> : children}
     </button>
   );
 }

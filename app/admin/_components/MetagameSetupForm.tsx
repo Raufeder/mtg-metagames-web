@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@/lib/toast/context";
-import { createMetagame, addSet, addBanlist, type Metagame } from "@/lib/api/metagames";
+import { createMetagame, addSet, addBanlist, addRestrictedList, type Metagame } from "@/lib/api/metagames";
 import { createTournament, type Tournament } from "@/lib/api/tournaments";
 import { TextField } from "@/app/components/atoms/form_atoms/TextField";
 import { DateField } from "@/app/components/atoms/form_atoms/DateField";
@@ -50,6 +50,13 @@ export function MetagameSetupForm({
     formState: { isSubmitting: isSubmittingBanlist },
   } = useForm<{ card_list: string }>();
 
+  const {
+    register: registerRestricted,
+    handleSubmit: handleRestrictedSubmit,
+    reset: resetRestricted,
+    formState: { isSubmitting: isSubmittingRestricted },
+  } = useForm<{ card_list: string }>();
+
   async function onCreateMetagame(values: MetagameFormValues) {
     try {
       const data = await createMetagame(values);
@@ -83,6 +90,17 @@ export function MetagameSetupForm({
       resetBanlist();
     } catch (e) {
       addToast(e instanceof Error ? e.message : "Failed to submit banlist", "error");
+    }
+  }
+
+  async function onSubmitRestricted(values: { card_list: string }) {
+    if (!metagame) return;
+    try {
+      await addRestrictedList(metagame.id, values.card_list.trim());
+      addToast("Restricted list submitted", "success");
+      resetRestricted();
+    } catch (e) {
+      addToast(e instanceof Error ? e.message : "Failed to submit restricted list", "error");
     }
   }
 
@@ -172,9 +190,30 @@ export function MetagameSetupForm({
         </form>
       </section>
 
-      {/* 1d. Tournaments */}
+      {/* 1d. Restricted List */}
       <section className={`rounded-lg border p-5 ${sectionDisabled}`}>
-        <h2 className="mb-4 text-base font-semibold">1d. Add Tournaments</h2>
+        <h2 className="mb-4 text-base font-semibold">
+          1d. Restricted List{" "}
+          <span className="text-sm font-normal text-text-muted">(optional)</span>
+        </h2>
+        <form onSubmit={handleRestrictedSubmit(onSubmitRestricted)} className="space-y-3">
+          <TextareaField
+            label=""
+            registration={registerRestricted("card_list", { required: true })}
+            placeholder={"Ancestral Recall\nBlack Lotus\nMox Pearl"}
+            hint="One card name per line"
+            rows={5}
+            mono
+          />
+          <Button type="submit" loading={isSubmittingRestricted}>
+            Submit Restricted List
+          </Button>
+        </form>
+      </section>
+
+      {/* 1e. Tournaments */}
+      <section className={`rounded-lg border p-5 ${sectionDisabled}`}>
+        <h2 className="mb-4 text-base font-semibold">1e. Add Tournaments</h2>
         {tournaments.length > 0 && (
           <ul className="mb-4 space-y-1 text-sm text-text-muted">
             {tournaments.map((t) => (

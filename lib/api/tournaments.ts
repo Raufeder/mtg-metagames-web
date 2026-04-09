@@ -1,15 +1,38 @@
-import { post } from "./client";
+import { get, post } from "./client";
 
 export interface Tournament {
-  id: number;
+  id: string;
   name: string;
   start_date: string;
   end_date: string;
   location: string;
+  metagame_id: string;
+}
+
+export interface TournamentDeck {
+  id: string;
+  name: string;
+  placement: number;
+  player_name: string;
+  archetype_id: string;
+  tournament_id: string;
+  archetypes: {
+    id: string;
+    name: string;
+    colors: string[];
+  };
+}
+
+export interface TournamentDetail extends Tournament {
+  decks: TournamentDeck[];
+}
+
+export function getTournament(metagameId: string, tournamentId: string): Promise<TournamentDetail> {
+  return get<TournamentDetail>(`/metagames/${metagameId}/tournaments/${tournamentId}`);
 }
 
 export function createTournament(
-  metagameId: number,
+  metagameId: string,
   data: { name: string; start_date: string; end_date: string; location: string }
 ): Promise<Tournament> {
   return post<Tournament>(`/metagames/${metagameId}/tournaments`, data);

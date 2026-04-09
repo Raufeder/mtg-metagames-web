@@ -4,8 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchModal } from "./SearchModal";
+import { MetagamesDropdown } from "./MetagamesDropdown";
+import { UserButton } from "./UserButton";
+import { useAuth } from "@/lib/auth/context";
 
 export function Header() {
+  const { user } = useAuth();
   const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
@@ -23,9 +27,17 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <Link href="/" className="text-base font-semibold tracking-tight text-text hover:text-primary transition-colors">
-            MTG Metagames
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/" className="text-base font-semibold tracking-tight text-text hover:text-primary transition-colors">
+              MTG Metagames
+            </Link>
+            <nav className="hidden md:flex items-center gap-4 text-sm text-text-muted">
+              <MetagamesDropdown />
+              {user?.app_metadata?.is_admin === true && (
+                <Link href="/admin" className="hover:text-text transition-colors">Admin</Link>
+              )}
+            </nav>
+          </div>
 
           <div className="flex items-center gap-2">
             {/* Mobile: icon only */}
@@ -57,8 +69,9 @@ export function Header() {
               <kbd className="rounded border border-border px-1.5 py-0.5 font-mono text-xs">/</kbd>
             </button>
           </div>
-          <div className="hidden md:block w-px">
-          <ThemeToggle />
+          <div className="hidden md:flex items-center gap-1">
+            <ThemeToggle />
+            <UserButton />
           </div>
         </div>
       </header>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { PageSpinner } from "@/app/components/atoms/PageSpinner";
+import { formatDate } from "@/lib/utils/date";
 import Link from "next/link";
 import { search, type SearchResults } from "@/lib/api/search";
 
@@ -113,7 +115,9 @@ export function SearchModal({ open, onClose }: Props) {
         <div className="flex-1 overflow-y-auto px-4 py-6">
           <div className="space-y-6">
           {loading && (
-            <p className="text-center text-sm text-text-muted">Searching…</p>
+            <div className="flex justify-center py-4">
+              <PageSpinner className="h-16 w-16 text-text-muted" />
+            </div>
           )}
           {error && (
             <p className="text-center text-sm text-danger">{error}</p>
@@ -122,45 +126,49 @@ export function SearchModal({ open, onClose }: Props) {
             <p className="text-center text-sm text-text-muted">No results for "{debouncedQuery}"</p>
           )}
           {!loading && !error && results && (
-            <>
-              <ResultSection title="Metagames" count={results.metagames.length}>
-                {results.metagames.map((m) => (
-                  <ResultLink key={m.id} href={`/metagames/${m.id}`} onClick={onClose}>
-                    <span className="font-medium">{m.name}</span>
-                    <span className="text-text-muted text-xs">{m.start_date} → {m.end_date}</span>
-                  </ResultLink>
-                ))}
-              </ResultSection>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <ResultSection title="Metagames" count={results.metagames.length}>
+                  {results.metagames.map((m) => (
+                    <ResultLink key={m.id} href={`/metagames/${m.id}`} onClick={onClose}>
+                      <span className="font-medium">{m.name}</span>
+                      <span className="text-text-muted text-xs">{formatDate(m.start_date)} → {formatDate(m.end_date)}</span>
+                    </ResultLink>
+                  ))}
+                </ResultSection>
 
-              <ResultSection title="Tournaments" count={results.tournaments.length}>
-                {results.tournaments.map((t) => (
-                  <ResultLink key={t.id} href={`/metagames/${t.metagame_id}`} onClick={onClose}>
-                    <span className="font-medium">{t.name}</span>
-                    {t.location && <span className="text-text-muted text-xs">{t.location}</span>}
-                  </ResultLink>
-                ))}
-              </ResultSection>
+                <ResultSection title="Tournaments" count={results.tournaments.length}>
+                  {results.tournaments.map((t) => (
+                    <ResultLink key={t.id} href={`/metagames/${t.metagame_id}`} onClick={onClose}>
+                      <span className="font-medium">{t.name}</span>
+                      {t.location && <span className="text-text-muted text-xs">{t.location}</span>}
+                    </ResultLink>
+                  ))}
+                </ResultSection>
+              </div>
 
-              <ResultSection title="Archetypes" count={results.archetypes.length}>
-                {results.archetypes.map((a) => (
-                  <ResultLink key={a.id} href={`/metagames/${a.metagame_id}`} onClick={onClose}>
-                    <span className="font-medium">{a.name}</span>
-                    {a.colors.length > 0 && (
-                      <span className="text-text-muted text-xs font-mono">{a.colors.join("")}</span>
-                    )}
-                  </ResultLink>
-                ))}
-              </ResultSection>
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <ResultSection title="Archetypes" count={results.archetypes.length}>
+                  {results.archetypes.map((a) => (
+                    <ResultLink key={a.id} href={`/metagames/${a.metagame_id}`} onClick={onClose}>
+                      <span className="font-medium">{a.name}</span>
+                      {a.colors.length > 0 && (
+                        <span className="text-text-muted text-xs font-mono">{a.colors.join("")}</span>
+                      )}
+                    </ResultLink>
+                  ))}
+                </ResultSection>
 
-              <ResultSection title="Decks" count={results.decks.length}>
-                {results.decks.map((d) => (
-                  <ResultLink key={d.id} href={`/metagames/${d.tournament_id}/${d.id}`} onClick={onClose}>
-                    <span className="font-medium">{d.name}</span>
-                    <span className="text-text-muted text-xs">{d.player_name}</span>
-                  </ResultLink>
-                ))}
-              </ResultSection>
-            </>
+                <ResultSection title="Decks" count={results.decks.length}>
+                  {results.decks.map((d) => (
+                    <ResultLink key={d.id} href={`/metagames/${d.tournament_id}/${d.id}`} onClick={onClose}>
+                      <span className="font-medium">{d.name}</span>
+                      <span className="text-text-muted text-xs">{d.player_name}</span>
+                    </ResultLink>
+                  ))}
+                </ResultSection>
+              </div>
+            </div>
           )}
           {!query.trim() && (
             <p className="text-center text-sm text-text-muted">

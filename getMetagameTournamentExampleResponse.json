@@ -1,0 +1,201 @@
+{
+    "id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4",
+    "metagame_id": "4bdb83f9-c01f-4e04-b098-b92be8472185",
+    "name": "2010 World Championships",
+    "start_date": "2010-12-09T00:00:00+00:00",
+    "end_date": "2010-12-12T00:00:00+00:00",
+    "location": "Chiba, Japan",
+    "decks": [
+        {
+            "id": "f2ecf0bc-b27f-44cd-a74c-bf7ed8d07d84",
+            "name": "UB Control",
+            "placement": 2,
+            "archetypes": {
+                "id": "2d98d438-f13d-4dda-8c8b-2ee52b411b12",
+                "name": "UB Control",
+                "colors": [
+                    "U",
+                    "B"
+                ]
+            },
+            "player_name": "Guillaume Wafo-Tapa",
+            "archetype_id": "2d98d438-f13d-4dda-8c8b-2ee52b411b12",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "b822b7ec-7dec-427b-a3db-7499f9f15a0e",
+            "name": "Mono G Eldrazi",
+            "placement": 4,
+            "archetypes": {
+                "id": "f21be280-83f6-493d-a20b-56176a9aaf1a",
+                "name": "Mono G Eldrazi",
+                "colors": [
+                    "G"
+                ]
+            },
+            "player_name": "Love Janse",
+            "archetype_id": "f21be280-83f6-493d-a20b-56176a9aaf1a",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "d3fa91ee-c2e4-4904-b7bb-6a9f334e8e39",
+            "name": "UW Control",
+            "placement": 8,
+            "archetypes": {
+                "id": "77989615-47d4-4143-b665-ce479796a4cc",
+                "name": "UW Control",
+                "colors": [
+                    "U",
+                    "W"
+                ]
+            },
+            "player_name": "Johnathan Randle",
+            "archetype_id": "77989615-47d4-4143-b665-ce479796a4cc",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "88bf6bc7-06f7-4c79-9121-1aadae8c85e8",
+            "name": "UW Hawk Control (Caw Go)",
+            "placement": 78,
+            "archetypes": {
+                "id": "77989615-47d4-4143-b665-ce479796a4cc",
+                "name": "UW Control",
+                "colors": [
+                    "U",
+                    "W"
+                ]
+            },
+            "player_name": "Brian Kibler",
+            "archetype_id": "77989615-47d4-4143-b665-ce479796a4cc",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "59cb6dc1-b02a-4a87-9964-7d279cd07446",
+            "name": "Br Vampires",
+            "placement": 5,
+            "archetypes": {
+                "id": "f21be280-83f6-493d-a20b-56176a9aaf1a",
+                "name": "Mono G Eldrazi",
+                "colors": [
+                    "G"
+                ]
+            },
+            "player_name": "Eric Froehlich",
+            "archetype_id": "f21be280-83f6-493d-a20b-56176a9aaf1a",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "e7a1bde2-72fa-43b8-ad4c-aeecce444aeb",
+            "name": "GR Valakut",
+            "placement": 22,
+            "archetypes": {
+                "id": "47633245-4c08-490e-9b2a-17a7ee1ab8a3",
+                "name": "GR Valakut",
+                "colors": [
+                    "R",
+                    "G"
+                ]
+            },
+            "player_name": "Matt Sperling",
+            "archetype_id": "47633245-4c08-490e-9b2a-17a7ee1ab8a3",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "bdb7dd1d-3e1e-4d2f-854f-4ca8828e65ea",
+            "name": "GUr Midrange",
+            "placement": 24,
+            "archetypes": {
+                "id": "06ae4f9f-667d-45bc-9463-c14e527ae7e0",
+                "name": "RUG Midrange",
+                "colors": [
+                    "R",
+                    "U",
+                    "G"
+                ]
+            },
+            "player_name": "Cristian Zuniga",
+            "archetype_id": "06ae4f9f-667d-45bc-9463-c14e527ae7e0",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "65aaaf95-076a-4cb1-bafe-7234a35c9345",
+            "name": "RW Landfall Aggro",
+            "placement": 83,
+            "archetypes": {
+                "id": "23881b45-e0c5-4336-9d92-2c724d0008a4",
+                "name": "RW Landfall Aggro",
+                "colors": [
+                    "W",
+                    "R"
+                ]
+            },
+            "player_name": "Chikara Nakajima",
+            "archetype_id": "23881b45-e0c5-4336-9d92-2c724d0008a4",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "839dca82-3175-49a6-8f5e-cca8355cc4b6",
+            "name": "BUG Midrange",
+            "placement": 29,
+            "archetypes": {
+                "id": "9fa4cfa9-92fc-4edf-8892-756d9691c74b",
+                "name": "BUG Midrange",
+                "colors": [
+                    "B",
+                    "U",
+                    "G"
+                ]
+            },
+            "player_name": "Alexey Golovin",
+            "archetype_id": "9fa4cfa9-92fc-4edf-8892-756d9691c74b",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "91c59510-f9f8-4e5f-b82f-6482a91e30dc",
+            "name": "Mono R Aggro",
+            "placement": 149,
+            "archetypes": {
+                "id": "d4fb73fc-631f-4630-af45-5422afffe296",
+                "name": "Mono R Aggro",
+                "colors": [
+                    "R"
+                ]
+            },
+            "player_name": "Frank Roelofs",
+            "archetype_id": "d4fb73fc-631f-4630-af45-5422afffe296",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "84f27db1-5d44-4e0f-81be-a2e1b1faebc7",
+            "name": "GW Creatures",
+            "placement": 141,
+            "archetypes": {
+                "id": "256bbde6-861a-4e43-bb63-1eb59162108e",
+                "name": "GW Creatures",
+                "colors": [
+                    "W",
+                    "G"
+                ]
+            },
+            "player_name": "Piotr Andrys",
+            "archetype_id": "256bbde6-861a-4e43-bb63-1eb59162108e",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        },
+        {
+            "id": "1bb113a2-ec48-4243-b810-440d218de38f",
+            "name": "UB Midrange",
+            "placement": 129,
+            "archetypes": {
+                "id": "efd6c179-52af-491e-99f4-420367a97684",
+                "name": "UB Midrange",
+                "colors": [
+                    "U",
+                    "B"
+                ]
+            },
+            "player_name": "Yuuya Watanabe",
+            "archetype_id": "efd6c179-52af-491e-99f4-420367a97684",
+            "tournament_id": "da08d38c-f4c7-4ab7-b341-4941899c9ec4"
+        }
+    ]
+}
