@@ -1,5 +1,3 @@
-import { supabase } from "@/lib/supabase/client";
-
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 if (!BASE_URL) {
@@ -7,6 +5,10 @@ if (!BASE_URL) {
 }
 
 async function authHeaders(): Promise<Record<string, string>> {
+  // Lazy import so the Supabase client is never instantiated during server-side
+  // build of pages that only use get() — avoids "supabaseUrl is required" at build time
+  if (typeof window === "undefined") return {};
+  const { supabase } = await import("@/lib/supabase/client");
   const { data } = await supabase.auth.getSession();
   const token = data.session?.access_token;
   return token ? { Authorization: `Bearer ${token}` } : {};
