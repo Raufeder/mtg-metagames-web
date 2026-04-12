@@ -37,7 +37,7 @@ export function ColorPips({ colors, size = "sm" }: Props) {
               <img
                 src={config.svg}
                 alt={config.label}
-                className={`h-full w-full object-cover ${config.label === "White" ? "scale-[1.25]" : config.label === "Red" ? "mt-1" : config.label === "Black" ? "mt-[3px]" : ""} `}
+                className={`h-full w-full object-cover object-center ${config.label === "White" ? "scale-[1.25]" : config.label === "Red" ? "mt-1" : config.label === "Black" ? "mt-[3px]" : ""} `}
                 aria-hidden
               />
             ) : (

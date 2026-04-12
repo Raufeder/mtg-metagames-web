@@ -17,8 +17,8 @@ interface Props {
 
 export function ColorPicker({ value, onChange }: Props) {
   function toggle(color: Color) {
-    if (value.includes(color)) {
-      onChange(value.filter((c) => c !== color));
+    if (value?.includes(color)) {
+      onChange(value?.filter((c) => c !== color));
     } else {
       onChange([...value, color]);
     }
@@ -27,7 +27,7 @@ export function ColorPicker({ value, onChange }: Props) {
   return (
     <div className="flex flex-wrap gap-2">
       {VALID_COLORS.map((color) => {
-        const active = value.includes(color);
+        const active = value?.includes(color);
         return (
           <button
             key={color}

@@ -58,3 +58,16 @@ export function updateArchetype(
 export function deleteArchetype(metagameId: string, archetypeId: string): Promise<void> {
   return del(`/metagames/${metagameId}/archetypes/${archetypeId}`);
 }
+
+/** Update an archetype globally (not scoped to a metagame). */
+export function updateArchetypeGlobal(
+  archetypeId: string,
+  data: Partial<{ name: string; colors: string[] }>
+): Promise<Archetype> {
+  return patch<Archetype>(`/archetypes/${archetypeId}`, data);
+}
+
+/** Delete an archetype globally (not scoped to a metagame). */
+export function deleteArchetypeGlobal(archetypeId: string): Promise<void> {
+  return del(`/archetypes/${archetypeId}`);
+}

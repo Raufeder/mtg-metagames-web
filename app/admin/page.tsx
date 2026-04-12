@@ -13,13 +13,22 @@ export default async function AdminDashboard() {
     <div className="mx-auto max-w-5xl px-4 py-10 space-y-8">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-text">Admin Dashboard</h1>
-        <Link
-          href="/admin/metagames/new"
-          className="inline-flex items-center gap-2 rounded bg-primary px-4 py-2 text-sm font-medium text-bg hover:opacity-80 transition-colors"
-        >
-          <Icon name="Plus" size={16} />
-          New Metagame
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href="/admin/archetypes"
+            className="inline-flex items-center gap-2 rounded border border-border px-4 py-2 text-sm font-medium text-text-muted hover:border-primary hover:text-primary transition-colors"
+          >
+            <Icon name="Layers" size={16} />
+            Archetypes
+          </Link>
+          <Link
+            href="/admin/metagames/new"
+            className="inline-flex items-center gap-2 rounded bg-primary px-4 py-2 text-sm font-medium text-bg hover:opacity-80 transition-colors"
+          >
+            <Icon name="Plus" size={16} />
+            New Metagame
+          </Link>
+        </div>
       </div>
 
       <div className="space-y-2">
