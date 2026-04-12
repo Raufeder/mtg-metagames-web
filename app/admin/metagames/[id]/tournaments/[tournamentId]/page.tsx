@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { getTournament } from "@/lib/api/tournaments";
 import { updateDeck, deleteDeck, createDeck } from "@/lib/api/decks";
-import { addArchetype, getArchetype } from "@/lib/api/archetypes";
 import { getMetagame } from "@/lib/api/metagames";
+import { useAdminStore } from "@/lib/store/adminStore";
 import { useToast } from "@/lib/toast/context";
 import { formatDate } from "@/lib/utils/date";
 import type { TournamentDetail, TournamentDeck } from "@/lib/api/tournaments";
@@ -16,6 +16,7 @@ import { Icon } from "@/app/components/atoms/Icon";
 import { ConfirmModal } from "@/app/components/atoms/ConfirmModal";
 import { TextField } from "@/app/components/atoms/form_atoms/TextField";
 import { NumberField } from "@/app/components/atoms/form_atoms/NumberField";
+import { SelectField } from "@/app/components/atoms/form_atoms/SelectField";
 import { PageSpinner } from "@/app/components/atoms/PageSpinner";
 
 interface Props {
@@ -32,6 +33,7 @@ export default function AdminTournamentPage({ params }: Props) {
   const { id: metagameId, tournamentId } = use(params);
   const { addToast } = useToast();
   const router = useRouter();
+  const setMetagame = useAdminStore((s) => s.setMetagame);
 
   const [tournament, setTournament] = useState<TournamentDetail | null>(null);
   const [metagameName, setMetagameName] = useState("");
@@ -42,9 +44,9 @@ export default function AdminTournamentPage({ params }: Props) {
 
   useEffect(() => {
     Promise.all([getTournament(metagameId, tournamentId), getMetagame(metagameId)])
-      .then(([t, m]) => { setTournament(t); setMetagameName(m.name); })
+      .then(([t, m]) => { setTournament(t); setMetagameName(m.name); setMetagame(m); })
       .finally(() => setLoading(false));
-  }, [metagameId, tournamentId]);
+  }, [metagameId, tournamentId, setMetagame]);
 
   if (loading) return <div className="flex min-h-[60vh] items-center justify-center"><PageSpinner className="h-16 w-16 text-text-muted" /></div>;
   if (!tournament) return <p className="p-10 text-center text-sm text-danger">Not found</p>;
@@ -103,7 +105,6 @@ export default function AdminTournamentPage({ params }: Props) {
         <div className={`grid transition-all duration-200 ${addingDeck ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
           <div className="overflow-hidden">
             <AddDeckForm
-              metagameId={metagameId}
               tournamentId={tournamentId}
               onCancel={() => setAddingDeck(false)}
               onSave={async (deck) => {
@@ -184,14 +185,16 @@ function DeckRow({ deck, metagameId, tournamentId, isEditing, onEdit, onCancelEd
   );
 }
 
-function AddDeckForm({ metagameId, tournamentId, onCancel, onSave }: {
-  metagameId: string;
+function AddDeckForm({ tournamentId, onCancel, onSave }: {
   tournamentId: string;
   onCancel: () => void;
   onSave: (deck: unknown) => Promise<void>;
 }) {
   const { addToast } = useToast();
+  const archetypes = useAdminStore((s) => s.metagame?.archetypes ?? []);
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<DeckForm & { archetype_id: string }>();
+
+  const archetypeOptions = archetypes.map((a) => ({ value: a.id, label: a.name }));
 
   async function onSubmit(values: DeckForm & { archetype_id: string }) {
     try {
@@ -207,7 +210,7 @@ function AddDeckForm({ metagameId, tournamentId, onCancel, onSave }: {
       <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">New Deck</p>
       <div className="grid grid-cols-2 gap-3">
         <TextField label="Player name" registration={register("player_name", { required: true })} />
-        <TextField label="Archetype ID" registration={register("archetype_id", { required: true })} />
+        <SelectField label="Archetype" registration={register("archetype_id", { required: true })} options={archetypeOptions} />
         <TextField label="Deck name" registration={register("name")} optional />
         <NumberField label="Placement" registration={register("placement")} min={1} optional />
       </div>
