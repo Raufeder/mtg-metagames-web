@@ -44,7 +44,7 @@ export function MetagameView({ metagame, children }: Props) {
               <h3 className="mb-2 text-sm font-semibold text-text-muted uppercase tracking-wider">Banned</h3>
               <ul className="columns-2 gap-4 sm:columns-3 lg:columns-4">
                 {metagame.banlist.map((card) => (
-                  <li key={card} className="mb-1 text-sm text-text">{card}</li>
+                  <li key={card.id} className="mb-1 text-sm text-text">{card.name}</li>
                 ))}
               </ul>
             </div>
@@ -54,7 +54,7 @@ export function MetagameView({ metagame, children }: Props) {
               <h3 className="mb-2 text-sm font-semibold text-text-muted uppercase tracking-wider">Restricted</h3>
               <ul className="columns-2 gap-4 sm:columns-3 lg:columns-4">
                 {metagame.restrictedlist.map((card) => (
-                  <li key={card} className="mb-1 text-sm text-text">{card}</li>
+                  <li key={card.id} className="mb-1 text-sm text-text">{card.name}</li>
                 ))}
               </ul>
             </div>

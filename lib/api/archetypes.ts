@@ -1,4 +1,4 @@
-import { get, post } from "./client";
+import { get, post, patch, del } from "./client";
 
 export interface Archetype {
   id: string;
@@ -27,8 +27,16 @@ export interface ArchetypeDetail extends Archetype {
   decks: ArchetypeDeck[];
 }
 
+export function getArchetypes(): Promise<Archetype[]> {
+  return get<Archetype[]>("/archetypes");
+}
+
 export function getArchetype(metagameId: string, archetypeId: string): Promise<ArchetypeDetail> {
   return get<ArchetypeDetail>(`/metagames/${metagameId}/archetypes/${archetypeId}`);
+}
+
+export function linkArchetype(metagameId: string, archetypeId: string): Promise<Archetype> {
+  return post<Archetype>(`/metagames/${metagameId}/archetypes`, { archetype_id: archetypeId });
 }
 
 export function addArchetype(
@@ -37,4 +45,16 @@ export function addArchetype(
   colors: string[]
 ): Promise<Archetype> {
   return post<Archetype>(`/metagames/${metagameId}/archetypes`, { name, colors });
+}
+
+export function updateArchetype(
+  metagameId: string,
+  archetypeId: string,
+  data: Partial<{ name: string; colors: string[] }>
+): Promise<Archetype> {
+  return patch<Archetype>(`/metagames/${metagameId}/archetypes/${archetypeId}`, data);
+}
+
+export function deleteArchetype(metagameId: string, archetypeId: string): Promise<void> {
+  return del(`/metagames/${metagameId}/archetypes/${archetypeId}`);
 }

@@ -1,4 +1,4 @@
-import { get, post } from "./client";
+import { get, post, patch, del } from "./client";
 
 export interface Tournament {
   id: string;
@@ -36,4 +36,16 @@ export function createTournament(
   data: { name: string; start_date: string; end_date: string; location: string }
 ): Promise<Tournament> {
   return post<Tournament>(`/metagames/${metagameId}/tournaments`, data);
+}
+
+export function updateTournament(
+  metagameId: string,
+  tournamentId: string,
+  data: Partial<{ name: string; start_date: string; end_date: string; location: string }>
+): Promise<Tournament> {
+  return patch<Tournament>(`/metagames/${metagameId}/tournaments/${tournamentId}`, data);
+}
+
+export function deleteTournament(metagameId: string, tournamentId: string): Promise<void> {
+  return del(`/metagames/${metagameId}/tournaments/${tournamentId}`);
 }

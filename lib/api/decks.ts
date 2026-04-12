@@ -1,4 +1,4 @@
-import { get, post } from "./client";
+import { get, post, patch, del } from "./client";
 
 export interface Deck {
   id: string;
@@ -43,6 +43,26 @@ export function createDeck(data: {
   return post<Deck>("/decks", data);
 }
 
-export function addCards(deckId: string, card_list: string): Promise<unknown> {
-  return post(`/decks/${deckId}/cards`, { card_list });
+export interface AddCardsResult {
+  message: string;
+  failedCards: string[];
+}
+
+export function addCards(deckId: string, card_list: string): Promise<AddCardsResult> {
+  return post<AddCardsResult>(`/decks/${deckId}/cards`, { card_list });
+}
+
+export function updateDeck(
+  deckId: string,
+  data: Partial<{ name: string; player_name: string; placement: number }>
+): Promise<Deck> {
+  return patch<Deck>(`/decks/${deckId}`, data);
+}
+
+export function deleteDeck(deckId: string): Promise<void> {
+  return del(`/decks/${deckId}`);
+}
+
+export function removeCard(deckId: string, scryfallId: string): Promise<void> {
+  return del(`/decks/${deckId}/cards/${scryfallId}`);
 }

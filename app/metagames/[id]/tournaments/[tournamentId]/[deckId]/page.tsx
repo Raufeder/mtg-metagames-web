@@ -5,6 +5,7 @@ import { getMetagame } from "@/lib/api/metagames";
 import { fetchCardsByIds } from "@/lib/api/scryfall";
 import { ColorPips } from "@/app/components/metagames/ColorPips";
 import { CardList } from "@/app/components/decks/CardList";
+import { endingOfPlacement } from "@/lib/utils/placementEnding";
 
 interface Props {
   params: Promise<{ id: string; tournamentId: string; deckId: string }>;
@@ -53,7 +54,7 @@ export default async function DecklistPage({ params }: Props) {
           <span>{deck.player_name}</span>
           {deck.placement && (
             <span>
-              {deck.placement === 1 ? "🥇 1st place" : `${deck.placement}th place`}
+              {`${endingOfPlacement(deck.placement)} place`}
             </span>
           )}
           <span>{deck.tournaments.name}</span>

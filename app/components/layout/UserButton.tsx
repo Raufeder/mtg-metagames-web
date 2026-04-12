@@ -10,7 +10,7 @@ export function UserButton() {
   const [loginOpen, setLoginOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const isAdmin = user?.app_metadata?.is_admin === true;
+  const isAdmin = user?.app_metadata?.role === "admin";
   const label = user?.email?.split("@")[0] ?? "Account";
 
   if (!user) {

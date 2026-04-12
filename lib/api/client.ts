@@ -40,3 +40,32 @@ export async function post<T = unknown>(path: string, body: object): Promise<T> 
 
   return res.json() as Promise<T>;
 }
+
+export async function patch<T = unknown>(path: string, body: object): Promise<T> {
+  const headers = await authHeaders();
+  const res = await fetch(`${BASE_URL}${path}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", ...headers },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => res.statusText);
+    throw new Error(`${res.status} ${res.statusText}: ${text}`);
+  }
+
+  return res.json() as Promise<T>;
+}
+
+export async function del(path: string): Promise<void> {
+  const headers = await authHeaders();
+  const res = await fetch(`${BASE_URL}${path}`, {
+    method: "DELETE",
+    headers,
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => res.statusText);
+    throw new Error(`${res.status} ${res.statusText}: ${text}`);
+  }
+}

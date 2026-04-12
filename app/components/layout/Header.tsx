@@ -33,7 +33,7 @@ export function Header() {
             </Link>
             <nav className="hidden md:flex items-center gap-4 text-sm text-text-muted">
               <MetagamesDropdown />
-              {user?.app_metadata?.is_admin === true && (
+              {user?.app_metadata?.role === "admin" && (
                 <Link href="/admin" className="hover:text-text transition-colors">Admin</Link>
               )}
             </nav>
