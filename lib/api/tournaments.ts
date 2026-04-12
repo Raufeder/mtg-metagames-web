@@ -11,9 +11,9 @@ export interface Tournament {
 
 export interface TournamentDeck {
   id: string;
-  name: string;
-  placement: number;
-  player_name: string;
+  name: string | null;
+  placement: number | null;
+  player_name: string ;
   archetype_id: string;
   tournament_id: string;
   archetypes: {

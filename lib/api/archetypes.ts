@@ -8,8 +8,8 @@ export interface Archetype {
 
 export interface ArchetypeDeck {
   id: string;
-  name: string;
-  placement: number;
+  name: string | null;
+  placement: number | null;
   player_name: string;
   archetype_id: string;
   tournament_id: string;

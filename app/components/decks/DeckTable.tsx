@@ -3,8 +3,8 @@ import { ColorPips } from "@/app/components/metagames/ColorPips";
 
 export interface DeckRow {
   id: string;
-  name: string;
-  placement: number;
+  name: string | null;
+  placement: number | null;
   player_name: string;
   archetype: { id: string; name: string; colors: string[] };
   tournament: { id: string; name: string; metagame_id: string };
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function DeckTable({ decks, hideTournament, hideArchetype }: Props) {
-  const sorted = [...decks].sort((a, b) => a.placement - b.placement);
+  const sorted = [...decks].sort((a, b) => (a.placement ?? 999) - (b.placement ?? 999));
 
   if (sorted.length === 0) {
     return <p className="text-sm text-text-muted">No decks recorded.</p>;
@@ -46,7 +46,7 @@ export function DeckTable({ decks, hideTournament, hideArchetype }: Props) {
                   href={`/metagames/${d.tournament.metagame_id}/tournaments/${d.tournament.id}/${d.id}`}
                   className="font-medium text-text transition-colors hover:text-primary"
                 >
-                  {d.name}
+                  {d.name ?? d.player_name}
                 </Link>
               </td>
               <td className="py-3 pr-4 text-text-muted">{d.player_name}</td>
