@@ -18,12 +18,12 @@ interface Props {
 }
 
 export function ColorPips({ colors, size = "sm" }: Props) {
-  if (colors.length === 0) return null;
+  if (colors?.length === 0) return null;
   const { dim, text } = SIZE[size];
 
   return (
     <div className="flex items-center gap-1">
-      {colors.map((c) => {
+      {colors?.map((c) => {
         const config = COLOR_CONFIG[c] ?? COLOR_CONFIG["C"];
         return (
           <span
@@ -37,7 +37,7 @@ export function ColorPips({ colors, size = "sm" }: Props) {
               <img
                 src={config.svg}
                 alt={config.label}
-                className={`h-full w-full object-cover ${config.label === "White" ? "scale-[1.25]" : config.label === "Red" ? "mt-1" : ""} `}
+                className={`h-full w-full object-cover ${config.label === "White" ? "scale-[1.25]" : config.label === "Red" ? "mt-1" : config.label === "Black" ? "mt-[3px]" : ""} `}
                 aria-hidden
               />
             ) : (

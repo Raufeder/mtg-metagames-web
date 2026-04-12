@@ -146,12 +146,12 @@ export function AdminArchetypesList({ metagameId, archetypes }: Props) {
           >
             <Icon name="Plus" size={14} /> New archetype
           </button>
-          {/* <button
+          <button
             onClick={() => setLinkingExisting(true)}
             className="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors"
           >
             <Icon name="Link" size={14} /> Link existing
-          </button> */}
+          </button>
         </div>
       )}
 
