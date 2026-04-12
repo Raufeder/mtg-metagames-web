@@ -7,6 +7,7 @@ import { createMetagame } from "@/lib/api/metagames";
 import { useToast } from "@/lib/toast/context";
 import { TextField } from "@/app/components/atoms/form_atoms/TextField";
 import { DateField } from "@/app/components/atoms/form_atoms/DateField";
+import { SelectField } from "@/app/components/atoms/form_atoms/SelectField";
 import { Button } from "@/app/components/atoms/Button";
 import { ACCEPTABLE_FORMATS } from "@/lib/constants/formats";
 
@@ -43,15 +44,7 @@ export default function NewMetagamePage() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <TextField label="Name" registration={register("name", { required: true })} placeholder="e.g. Scars of Mirrodin Standard" />
-        <div className="space-y-1">
-          <label className="text-xs font-medium text-text-muted">Format</label>
-          <select
-            {...register("format", { required: true })}
-            className="w-full rounded border border-border bg-bg px-3 py-2 text-sm text-text outline-none focus:border-primary"
-          >
-            {ACCEPTABLE_FORMATS.map((f) => <option key={f}>{f}</option>)}
-          </select>
-        </div>
+        <SelectField label="Format" registration={register("format", { required: true })} options={ACCEPTABLE_FORMATS} />
         <DateField label="Start date" registration={register("start_date", { required: true })} />
         <DateField label="End date" registration={register("end_date", { required: true })} />
         <Button type="submit" loading={isSubmitting}>Create Metagame</Button>

@@ -11,6 +11,7 @@ import { Button } from "@/app/components/atoms/Button";
 import { Icon } from "@/app/components/atoms/Icon";
 import { ConfirmModal } from "@/app/components/atoms/ConfirmModal";
 import { TextField } from "@/app/components/atoms/form_atoms/TextField";
+import { SelectField } from "@/app/components/atoms/form_atoms/SelectField";
 import { DateField } from "@/app/components/atoms/form_atoms/DateField";
 import { TextareaField } from "@/app/components/atoms/form_atoms/TextareaField";
 import { AdminTournamentsList } from "./AdminTournamentsList";
@@ -132,15 +133,7 @@ export function AdminMetagameView() {
             <form onSubmit={heroForm.handleSubmit(saveHero)} className="border-t border-border pt-4 space-y-3">
               <div className="grid grid-cols-2 gap-3">
                 <TextField label="Name" registration={heroForm.register("name")} />
-                <div className="space-y-1">
-                  <label className="text-xs font-medium text-text-muted">Format</label>
-                  <select
-                    {...heroForm.register("format")}
-                    className="w-full rounded border border-border bg-bg px-3 py-2 text-sm text-text outline-none focus:border-primary"
-                  >
-                    {ACCEPTABLE_FORMATS.map((f) => <option key={f}>{f}</option>)}
-                  </select>
-                </div>
+                <SelectField label="Format" registration={heroForm.register("format")} options={ACCEPTABLE_FORMATS} />
                 <DateField label="Start date" registration={heroForm.register("start_date")} />
                 <DateField label="End date" registration={heroForm.register("end_date")} />
               </div>
